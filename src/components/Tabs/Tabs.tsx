@@ -23,7 +23,7 @@ export const Tabs = () => {
 
 
         if (!openTab) {
-            window.open(sortedTabs[0].id, '_self' ); // it's necessary for the default first page
+            window.location.href = sortedTabs[0].id; // it's necessary for the default first page
         } else {
             setActiveTab(openTab);
             getFile(openTab.path);
