@@ -3,10 +3,11 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "homepage": "https://igorko86.github.io/CmS/",
   "scripts": {
     "dev": "npx webpack serve",
     "build": "npx webpack --mode production",
-    "deploy": "npm run build && gh-pages -d dist"
+    "deploy": "npm run build && gh-pages -d docs"
   },
   "dependencies": {
     "@babel/core": "^7.23.2",
