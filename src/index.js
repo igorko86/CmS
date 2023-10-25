@@ -1,0 +1,53 @@
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { BrowserRouter, Route, Link, Routes, Navigate, useLocation } from 'react-router-dom';
+import tabData from './data/tabs.json';
+
+const tabs = tabData.sort((a, b) => a.order - b.order);
+
+const TabContent = () => {
+    const location = useLocation();
+    const currentTab = tabs.find((tab) => location.pathname.endsWith(tab.id));
+
+    if (!currentTab) {
+        return <Navigate to={`/${tabs[0].id}`} />;
+    }
+
+    const TabComponent = React.lazy(() => import(`./${currentTab.path}`));
+
+    return (
+        <div>
+            <h2>{currentTab.title}</h2>
+            <React.Suspense fallback={<div>Loading...</div>}>
+                <TabComponent />
+            </React.Suspense>
+        </div>
+    );
+};
+
+const App = () => (
+    <BrowserRouter>
+        <div>
+            <h1>Primitive CMS</h1>
+            <nav>
+                <ul>
+                    {tabs.map((tab) => (
+                        <li key={tab.id}>
+                            <Link to={`/${tab.id}`}>{tab.title}</Link>
+                        </li>
+                    ))}
+                </ul>
+            </nav>
+        </div>
+        <div>
+            <Routes>
+                <Route path="/" element={<TabContent />} />
+                {tabs.map((tab) => (
+                    <Route key={tab.id} path={`/${tab.id}`} element={<TabContent />} />
+                ))}
+            </Routes>
+        </div>
+    </BrowserRouter>
+);
+
+ReactDOM.render(<App />, document.getElementById('root'));
