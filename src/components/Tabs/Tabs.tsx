@@ -5,8 +5,9 @@ import tabs from "../../assets/tabs.json";
 
 import styles from './tabs.module.css';
 
+const sortedTabs = tabs.sort((a, b) => a.order > b.order ? 1 : -1);
+
 export const Tabs = () => {
-    const sortedTabs = tabs.sort((a, b) => a.order > b.order ? 1 : -1);
     const [activeTab, setActiveTab] = useState(null);
     const [Comp, setComp] = useState<ReactNode>(null);
     const { pathname } = useLocation();
