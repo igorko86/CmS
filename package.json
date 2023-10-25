@@ -4,8 +4,8 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "npx webpack serve",
-    "build": "npx webpack --mode production",
+    "dev": "npm webpack serve",
+    "build": "npm webpack --mode production",
     "deploy": "npm run build && gh-pages -d dist"
   },
   "dependencies": {
