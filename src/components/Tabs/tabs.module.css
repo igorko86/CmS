@@ -1,0 +1,15 @@
+.activeTab {
+    color: blue;
+}
+
+.tabList {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+    justify-content: center;
+}
+
+.tab {
+    text-decoration: none;
+    color: black;
+}
