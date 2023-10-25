@@ -2,11 +2,12 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  mode: 'development', // Set the mode to 'development'
+  mode: 'production',
   entry: './src/index.js',
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist'),
+    publicPath: '/CmS/',
   },
   module: {
     rules: [
@@ -37,7 +38,7 @@ module.exports = {
   ],
   devServer: {
     static: {
-      directory: path.join(__dirname, 'dist'), // Specify the directory for your static content
+      directory: path.join(__dirname, 'dist'),
     },
     compress: true,
     port: 3003,

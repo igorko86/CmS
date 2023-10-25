@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "npx webpack serve",
-    "build": "npx webpack --mode development",
+    "build": "npx webpack --mode production",
     "deploy": "npm run build && gh-pages -d dist"
   },
   "dependencies": {
