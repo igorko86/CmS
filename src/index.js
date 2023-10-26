@@ -15,6 +15,7 @@ const TabContent = () => {
 
     useEffect(() => {
         console.log(`/CmS/${tabs[0].id}`);
+        window.location.href = `/CmS/${tabs[0].id}`;
        navigate(`/CmS/${tabs[0].id}`);
     }, [])
 
