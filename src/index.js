@@ -1,6 +1,6 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter, Route, Link, Routes, Navigate, useLocation } from 'react-router-dom';
+import { BrowserRouter, Route, NavLink, Routes, Navigate, useLocation } from 'react-router-dom';
 import tabData from './data/tabs.json';
 
 import './index.css';
@@ -9,13 +9,23 @@ const tabs = tabData.sort((a, b) => a.order - b.order);
 
 const TabContent = () => {
     const location = useLocation();
-    const currentTab = tabs.find((tab) => location.pathname.endsWith(tab.id));
+    const [currentTab, setCurrentTab] = useState()
+
+    useEffect(() => {
+        const tab = tabs.find((tab) => location.pathname.endsWith(tab.id));
+
+        if (tab) {
+            const TabComponent = React.lazy(() => import(`./${tab.path}`));
+
+            setCurrentTab(TabComponent)
+        }
+    }, [location]);
 
     if (!currentTab) {
         return <Navigate to={`/${tabs[0].id}`} />;
     }
 
-    const TabComponent = React.lazy(() => import(`./${currentTab.path}`));
+    const TabComponent  = currentTab;
 
     return (
         <div>
@@ -34,11 +44,11 @@ const App = () => (
                 <ul className={'nav'}>
                     {tabs.map((tab) => (
                         <li key={tab.id}>
-                            <Link to={`/${tab.id}`}
+                            <NavLink to={`/${tab.id}`}
                                 className={({ isActive }) => isActive ? 'active' : '' }
                             >
                                 {tab.title}
-                            </Link>
+                            </NavLink>
                         </li>
                     ))}
                 </ul>
