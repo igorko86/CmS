@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter, Route, NavLink, Routes, Navigate, useLocation } from 'react-router-dom';
 import tabData from './data/tabs.json';
 
-import styles from './styles.module.css';
+import './index.css';
 
 const tabs = tabData.sort((a, b) => a.order - b.order);
 
@@ -31,7 +31,7 @@ const App = () => (
         <div>
             <h1>Primitive CMS</h1>
             <nav>
-                <ul className={styles.nav}>
+                <ul className={'nav'}>
                     {tabs.map((tab) => (
                         <li key={tab.id}>
                             <NavLink to={`/${tab.id}`}

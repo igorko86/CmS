@@ -1,3 +1,8 @@
+.active {
+    color: red;
+    font-weight: bold;
+}
+
 .nav {
     display: flex;
     align-items: center;
@@ -5,4 +10,3 @@
 
     list-style-type: none;
 }
-
