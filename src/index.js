@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter, Route, NavLink, Routes, Navigate, useLocation } from 'react-router-dom';
 import tabData from './data/tabs.json';
 
-import './index.css';
+// import './index.css';
 
 const tabs = tabData.sort((a, b) => a.order - b.order);
 
