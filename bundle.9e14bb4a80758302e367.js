@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkcms=self.webpackChunkcms||[]).push([[181],{181:(e,t,n)=>{n.r(t),n.d(t,{default:()=>c});var u=n(294);const c=function(){return u.createElement("div",null,u.createElement("h1",null,"Dummy Chart"))}}}]);

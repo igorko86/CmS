@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkcms=self.webpackChunkcms||[]).push([[161],{161:(e,t,l)=>{l.r(t),l.d(t,{default:()=>u});var n=l(294);const u=function(){return n.createElement("table",null,n.createElement("tr",null,n.createElement("td",null,"Dummy"),n.createElement("td",null,"Table")))}}}]);
