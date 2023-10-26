@@ -12,7 +12,7 @@ const TabContent = () => {
     const navigate = useNavigate(); // Use the navigate function
 
     const currentTab = tabs.find((tab) => location.pathname.endsWith(tab.id));
-    console.log('df', currentTab)
+
     useEffect(() => {
         if (!currentTab) {
             return navigate(`/CmS/${tabs[0].id}`);
