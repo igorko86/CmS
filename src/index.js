@@ -1,7 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter, Route, Link, Routes, Navigate, useLocation } from 'react-router-dom';
+import { BrowserRouter, Route, NavLink, Routes, Navigate, useLocation } from 'react-router-dom';
 import tabData from './data/tabs.json';
+
+import styles from './styles.module.css';
 
 const tabs = tabData.sort((a, b) => a.order - b.order);
 
@@ -29,10 +31,14 @@ const App = () => (
         <div>
             <h1>Primitive CMS</h1>
             <nav>
-                <ul>
+                <ul className={styles.nav}>
                     {tabs.map((tab) => (
                         <li key={tab.id}>
-                            <Link to={`/${tab.id}`}>{tab.title}</Link>
+                            <NavLink to={`/${tab.id}`}
+                                     className={({ isActive }) => isActive ? 'active' : '' }
+                            >
+                                {tab.title}
+                            </NavLink>
                         </li>
                     ))}
                 </ul>
