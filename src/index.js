@@ -35,7 +35,7 @@ const App = () => (
                     {tabs.map((tab) => (
                         <li key={tab.id}>
                             <NavLink to={`/${tab.id}`}
-                                     className={({ isActive }) => isActive ? 'active' : '' }
+                                className={({ isActive }) => isActive ? 'active' : '' }
                             >
                                 {tab.title}
                             </NavLink>
