@@ -15,7 +15,7 @@ const TabContent = () => {
     console.log('df', currentTab)
     useEffect(() => {
         if (!currentTab) {
-            return navigate(`/${tabs[0].id}`);
+            return navigate(`/CmS/${tabs[0].id}`);
         }
 
     }, [currentTab])
@@ -39,7 +39,7 @@ const App = () => (
                 <ul className={'nav'}>
                     {tabs.map((tab) => (
                         <li key={tab.id}>
-                            <NavLink to={`/${tab.id}`}
+                            <NavLink to={`/CmS/${tab.id}`}
                                 className={({ isActive }) => isActive ? 'active' : '' }
                             >
                                 {tab.title}
@@ -53,7 +53,7 @@ const App = () => (
             <Routes>
                 <Route path="/" element={<TabContent />} />
                 {tabs.map((tab) => (
-                    <Route key={tab.id} path={`/${tab.id}`} element={<TabContent />} />
+                    <Route key={tab.id} path={`/CmS/${tab.id}`} element={<TabContent />} />
                 ))}
             </Routes>
         </div>
