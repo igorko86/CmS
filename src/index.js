@@ -29,7 +29,7 @@ const TabContent = () => {
 };
 
 const App = () => (
-    <BrowserRouter basename="https://igorko86.github.io/CmS/">
+    <BrowserRouter>
         <div>
             <h1>Primitive CMS</h1>
             <nav>
