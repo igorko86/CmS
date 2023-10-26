@@ -1,6 +1,6 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter, Route, NavLink, Routes, Navigate, useLocation } from 'react-router-dom';
+import { BrowserRouter, Route, NavLink, Routes, Navigate, useLocation, useNavigate } from 'react-router-dom';
 import tabData from './data/tabs.json';
 
 import './index.css';
@@ -9,23 +9,18 @@ const tabs = tabData.sort((a, b) => a.order - b.order);
 
 const TabContent = () => {
     const location = useLocation();
-    const [currentTab, setCurrentTab] = useState()
+    const navigate = useNavigate(); // Use the navigate function
 
+    const currentTab = tabs.find((tab) => location.pathname.endsWith(tab.id));
+    console.log('df', currentTab)
     useEffect(() => {
-        const tab = tabs.find((tab) => location.pathname.endsWith(tab.id));
-
-        if (tab) {
-            const TabComponent = React.lazy(() => import(`./${tab.path}`));
-
-            setCurrentTab(TabComponent)
+        if (!currentTab) {
+            return navigate(`/${tabs[0].id}`);
         }
-    }, [location]);
 
-    if (!currentTab) {
-        return <Navigate to={`/${tabs[0].id}`} />;
-    }
+    }, [currentTab])
 
-    const TabComponent  = currentTab;
+    const TabComponent = React.lazy(() => import(`./${currentTab?.path}`));
 
     return (
         <div>
