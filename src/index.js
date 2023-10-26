@@ -17,7 +17,6 @@ const TabContent = () => {
 
     return (
         <div>
-            <h2>{currentTab.title}</h2>
             <React.Suspense fallback={<div>Loading...</div>}>
                 <TabComponent />
             </React.Suspense>
