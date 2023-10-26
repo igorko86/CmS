@@ -14,6 +14,7 @@ const TabContent = () => {
     const currentTab = tabs.find((tab) => location.pathname.endsWith(tab.id));
 
     useEffect(() => {
+        console.log(`/CmS/${tabs[0].id}`);
        navigate(`/CmS/${tabs[0].id}`);
     }, [])
 
