@@ -14,11 +14,8 @@ const TabContent = () => {
     const currentTab = tabs.find((tab) => location.pathname.endsWith(tab.id));
 
     useEffect(() => {
-        if (!currentTab) {
-            return navigate(`/CmS/${tabs[0].id}`);
-        }
-
-    }, [currentTab])
+       navigate(`/CmS/${tabs[0].id}`);
+    }, [])
 
     const TabComponent = React.lazy(() => import(`./${currentTab?.path}`));
 
