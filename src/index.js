@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter, Route, NavLink, Routes, Navigate, useLocation } from 'react-router-dom';
+import { BrowserRouter, Route, Link, Routes, Navigate, useLocation } from 'react-router-dom';
 import tabData from './data/tabs.json';
 
 import './index.css';
@@ -20,7 +20,7 @@ const TabContent = () => {
     return (
         <div>
             <React.Suspense fallback={<div>Loading...</div>}>
-                TabComponent && <TabComponent />
+                {TabComponent && <TabComponent/>}
             </React.Suspense>
         </div>
     );
@@ -34,11 +34,11 @@ const App = () => (
                 <ul className={'nav'}>
                     {tabs.map((tab) => (
                         <li key={tab.id}>
-                            <NavLink to={`/${tab.id}`}
+                            <Link to={`/${tab.id}`}
                                 className={({ isActive }) => isActive ? 'active' : '' }
                             >
                                 {tab.title}
-                            </NavLink>
+                            </Link>
                         </li>
                     ))}
                 </ul>
